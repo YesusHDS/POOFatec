@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Tarefa 1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>Tarefa 1</h1>
+        <p>Crie um projeto de aplicação JavaEE com uma página inicial em HTML apresentando 2 formulário para respostas dinâmicas dos seguintes Servlets:</p>
+        <h2>Exercício 1</h2>
+        <p>MathServlet, que responda uma página com o resultado de uma operação aritmética(soma, subtração, multiplicação ou divisão) a partir de 2 parâmetros mais 1 parâmetro adicional para a operação</p>
+        <form action="mathservlet.html" method="get">
+            Escolha a operação:
+            <select name="nOpt">
+                <option value="1">Soma</option>
+                <option value="2">Subtração</option>
+                <option value="3">Multiplicação</option>
+                <option value="4">Divisão</option>
+            </select><br><br>
+            
+            <input type="number" name="nValor1">e<input type="number" name="nValor2">e<input type="number" name="nValor3"><button>Calcular</button>
+        </form>
+
+        <h2>Exercício 2</h2>
+        <p>RandomServlet, que resposta uma página com uma tabela de N números aleatórios conforme parâmetro informado pelo usuário.</p>
+        <form action="randomservlet.html" method="get">
+            Insira um número: <input type="number" name="nValor">
+            <br><button>Calcular</button>
+        </form>
+    </body>
+</html>
