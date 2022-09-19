@@ -1,0 +1,56 @@
+Comandos:
+
+ - Declarando jsonarray: JSONArray list = new JSONArray(); //biblioteca
+
+ - Declarando arraylist: ArrayList<String> tasks = new ArrayList(); //biblitoeca
+
+ - Declarando jsonobject: JSONObject err = new JSONObject(); //biblioteca
+
+
+Bootstrap: no site, em docs
+ Pegar o html do começo dos docs para importar o bootstrap e etc
+
+ - Component: componentes html no css
+ |- spinner: loading
+ |- alerts: alertas de erro
+
+ - class="table" //classe para ser posta em uma tag table para configurá-la
+
+
+VueJS: usar via CND, ou seja, simplesmente importar via um script src no html
+ Basicamente é criada uma tag e nela passada um id e após esse elemento abre-se uma tag script com as informações que serão vinculadas a esta tag e vinculadas ao ID dela através do método .mout("#id")
+
+ - <div id="app">{{message}}</div>
+   <script>
+	const {createApp} = vue;
+
+	createApp({
+		data(){
+			return message: "mensagem" //esta está sendo chamada dentro do elemento entre {{}}(interpolaçã)
+		}
+	}).mount("#app")
+   </script>
+
+ - Parâmetros do createapp
+ |- data(){} //recebe retornos que serão interpolados ou usados no html como dados
+ |- mounted(){} //as instruções/métodos aqui dentro são chamados ao vincular o createApp com um elemento html
+ |- methods(){} //em suas instruções é possível colocar rotinas de eventos, exemplo algo ao clicar o botão
+
+ - Propriedades Vue em HTML: usado nas tags html
+ |- v-if="boolean" //recebe um valor do return data que deve ser booleano //vue if
+ |- v-on:click="função" //vincula um método ao evento de click de alguma tag html, esse método deve estar dentro de methods(){} do createApp
+ |- v-for="task in list" //funciona semelhante ao foreach, lê "list" e retorna cada elemento como "task"
+ |- v-model="variável" //associa o valor de um input a um atributo que data está retornando
+
+
+Comandos Javascript:
+
+ //fetch é comando nativo que faz uma requisição externa. Ele requisita uma URL e pega a resposta dele
+ - fetch('url').then(response=>{return response.json()//converte pra json a resposta
+   }).then(data=>{ //esse parâmetro(data) é o return do then anterior
+   	app.list = data; //armazenando os
+   }).catch(e=>{ //tratando erro
+	app.error = e; //armazenando erro
+   }).finally(()=>{
+	app.loading = false; //desligando loading
+   })
