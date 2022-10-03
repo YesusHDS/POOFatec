@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    </head>
+    <body>
+        <fieldset>
+            <legend>Juros Simples</legend>
+            <form>
+                Capital Investido: <input type="number" id="iCapInv" required><br>
+                Taxa de Juros: <input type="number" id="iTaxaJ" required><br>
+                Tempo de Aplicação: <input type="number" id="iTempApi" required><br><br>
+                <div id="iCalcS">Calcular</div><br>
+            </form>
+            <div id="resp1"></div>
+        </fieldset>
+        <fieldset>
+            <legend>Juros Composto</legend>
+            <form>
+                Capital Investido: <input type="number" id="iCapInv2" required><br>
+                Taxa de Juros: <input type="number" id="iTaxaJ2" required><br>
+                Tempo de Aplicação: <input type="number" id="iTempApi2" required><br><br>
+                <div id="iCalcC">Calcular</div><br>
+            </form>
+            <div id="resp2"></div>
+        </fieldset>
+        <script>
+            const js = document.querySelector("#iCalcS");
+            const jc = document.querySelector("#iCalcC");
+            
+            js.addEventListener("click",()=>{
+                var caiInv = document.getElementById("iCapInv").value;
+                var taxaJuros = document.getElementById("iTaxaJ").value;
+                var tempoApi = document.getElementById("iTempApi").value;
+                fetch("http://localhost:8080/aula0310/yesus-juros-simples.json?c="+caiInv+"&i="+taxaJuros+"&t="+tempoApi).then(data=>{
+                    return data.json();
+                }).then(obj=>{
+                    var resp = document.getElementById("resp1").innerHTML="Capital Investido: "+obj.Capital+"<br>Taxa Investida: "+obj.Taxa+"<br>Tempo de Aplicação: "+obj.Tempo+"<br>Juros Simples: "+obj.Juros;
+                });
+                    
+            });
+            jc.addEventListener("click",()=>{
+                var caiInv = document.getElementById("iCapInv2").value;
+                var taxaJuros = document.getElementById("iTaxaJ2").value;
+                var tempoApi = document.getElementById("iTempApi2").value;
+                fetch("http://localhost:8080/aula0310/yesus-juros-composto.json?c="+caiInv+"&i="+taxaJuros+"&t="+tempoApi).then(data=>{
+                    return data.json();
+                }).then(obj=>{
+                    var resp = document.getElementById("resp2").innerHTML="Capital Investido: "+obj.Capital+"<br>Taxa Investida: "+obj.Taxa+"<br>Tempo de Aplicação: "+obj.Tempo+"<br>Montante:  "+obj.Montante;
+                });
+            });
+        </script>
+    </body>
+</html>
